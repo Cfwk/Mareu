@@ -10,17 +10,33 @@ import java.util.List;
  */
 
 public class Meeting {
+    private String name;
+    private String description;
     private Time heure;
     private String lieu;
     private String sujet;
+    private String createur;
     private List<ContactsContract.CommonDataKinds.Email> participants;
 
     public Meeting(Time heure, String lieu, String sujet, List<ContactsContract.CommonDataKinds.Email> participants) {
+        this.name = name;
+        this.description = description;
         this.heure = heure;
         this.lieu = lieu;
         this.sujet = sujet;
         this.participants = participants;
     }
+    public String getName(){
+        String toReturn = name + " - " + heure +" - "+ createur;
+        return toReturn;}
+
+    public String getDescription(){
+        String toReturn = participants.toString();
+        return toReturn;}
+
+    public void setName(String nom) { this.name = nom; }
+
+    public void setDescription(String description) { this.description = description; }
 
     public Time getHeure() {
         return heure;
@@ -50,9 +66,7 @@ public class Meeting {
         return participants;
     }
 
-    public void setParticipants(List<ContactsContract.CommonDataKinds.Email> participants) {
-        this.participants = participants;
-    }
+    public void setParticipants(List<ContactsContract.CommonDataKinds.Email> participants) { this.participants = participants; }
 
 
 

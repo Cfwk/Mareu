@@ -1,4 +1,4 @@
-package skiti.cfwz.mareu.model;
+package skiti.cfwz.mareu.controller;
 
 /**
  * Created by Skiti on 22/08/2019
@@ -11,7 +11,7 @@ public class DI {
      * Get an instance on @{@link MeetingApiService}
      * @return
      */
-    public static MeetingApiService getNeighbourApiService() {
+    public static MeetingApiService getMeetingApiService() {
         return service;
     }
 
