@@ -1,8 +1,5 @@
 package skiti.cfwz.mareu.model;
 
-import android.provider.ContactsContract;
-
-import java.sql.Time;
 import java.util.List;
 
 /**
@@ -12,22 +9,22 @@ import java.util.List;
 public class Meeting {
     private String name;
     private String description;
-    private Time heure;
-    private String lieu;
+    private String time;
+    private Salle salle;
     private String sujet;
-    private String createur;
-    private List<ContactsContract.CommonDataKinds.Email> participants;
+    private String creator;
+    private List<String> participants;
 
-    public Meeting(Time heure, String lieu, String sujet, List<ContactsContract.CommonDataKinds.Email> participants) {
+    public Meeting(String name,String heure, Salle salle, String sujet,String creator, List<String> participants) {
         this.name = name;
-        this.description = description;
-        this.heure = heure;
-        this.lieu = lieu;
+        this.time = heure;
+        this.salle = salle;
         this.sujet = sujet;
         this.participants = participants;
+        this.creator = creator;
     }
     public String getName(){
-        String toReturn = name + " - " + heure +" - "+ createur;
+        String toReturn = sujet + " - " + time +" - "+ creator;
         return toReturn;}
 
     public String getDescription(){
@@ -38,20 +35,20 @@ public class Meeting {
 
     public void setDescription(String description) { this.description = description; }
 
-    public Time getHeure() {
-        return heure;
+    public String getTime() {
+        return time;
     }
 
-    public void setHeure(Time heure) {
-        this.heure = heure;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getLieu() {
-        return lieu;
+    public Salle getSalle() {
+        return salle;
     }
 
-    public void setLieu(String lieu) {
-        this.lieu = lieu;
+    public void setSalle(Salle salle) {
+        this.salle = salle;
     }
 
     public String getSujet() {
@@ -62,12 +59,14 @@ public class Meeting {
         this.sujet = sujet;
     }
 
-    public List<ContactsContract.CommonDataKinds.Email> getParticipants() {
+    public List<String> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<ContactsContract.CommonDataKinds.Email> participants) { this.participants = participants; }
+    public void setParticipants(List<String> participants) { this.participants = participants; }
 
+    public String getCreator() { return creator; }
 
-
+    public void setCreator(String creator) { this.creator = creator;
+    }
 }

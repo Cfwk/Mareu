@@ -3,6 +3,7 @@ package skiti.cfwz.mareu.controller;
 import java.util.List;
 
 import skiti.cfwz.mareu.model.Meeting;
+import skiti.cfwz.mareu.model.Salle;
 
 /**
  * Created by Skiti on 21/08/2019
@@ -10,15 +11,22 @@ import skiti.cfwz.mareu.model.Meeting;
 
 public class DummyMeetingApiService implements MeetingApiService {
 
-    List<Meeting> Meetings;
+    List<Meeting> Meetings = DummyMeetingGenerator.generateMeetings();
+    List<Salle> Salles = DummySallesGenerator.generateSalles();
 
     @Override
-    public List<Meeting> getMeetings() {return Meetings;}
+    public List<Meeting> getMeetings() { return Meetings;}
 
     @Override
     public  void deleteMeetings(Meeting meeting){Meetings.remove(meeting);}
 
     @Override
     public void addMeeting(Meeting meeting) {Meetings.add(meeting);}
+
+    @Override
+    public List<Salle> getSalles() {
+        return Salles;
+    }
+
 
 }
