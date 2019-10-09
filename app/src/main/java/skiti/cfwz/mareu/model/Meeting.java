@@ -19,11 +19,10 @@ public class Meeting {
         this.sujet = sujet;
         this.participants = participants;
         this.creator = creator;
-        this.time.setHour(Hour);
-        this.time.setMinute(Minute);
+        this.time = new Time(Hour,Minute);
     }
     public String getName(){
-        String toReturn = sujet + " - " + time +" - "+ creator;
+        String toReturn = sujet + " - " + time.Time +" - "+ creator;
         return toReturn;}
 
     public String getDescription(){

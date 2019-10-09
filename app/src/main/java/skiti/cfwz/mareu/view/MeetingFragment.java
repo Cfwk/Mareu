@@ -66,10 +66,8 @@ public class MeetingFragment extends Fragment {
      */
     private void initList() {
         mMeetings = mApiService.getMeetings();
-        if (SortbyDate)
-            SortMeetingByDate(mMeetings,SortMinDate,SortMaxDate);
-        if (SortbyPlace)
-            SortMeetingByPlace(mMeetings,SortSalles);
+
+
         mRecyclerView.setAdapter(new ListMeetingRecyclerViewAdapter(mMeetings));
     }
 

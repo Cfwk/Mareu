@@ -13,12 +13,8 @@ import skiti.cfwz.mareu.model.Salle;
  */
 
 public abstract class DummyMeetingGenerator {
-    static Salle salletest = new Salle("Salle Rouge",1,R.drawable.ic_salle_rouge_24dp);
     public static List<Meeting> DUMMY_MEETING = Arrays.asList(
-            new Meeting("Reunion A",salletest,"Manger des crepes","Jerome","SDFSDFSsdfsdfsdfsdfsdfsfdggsdfgdsfgdfgsdfgfDFSDFS"),
-            new Meeting("Reunion B",salletest,"Manger des crepes","Jerome","SDFSDFSsdfsdfsdfsdfsdfsfdggsdfgdsfgdfgsdfgfDFSDFS"),
-            new Meeting("Reunion C",salletest,"Manger des crepes","Jerome","SDFSDFSsdfsdfsdfsdfsdfsfdggsdfgdsfgdfgsdfgfDFSDFS")
-    );
+            );
     static List<Meeting> generateMeetings() {
         return new ArrayList<Meeting>(DUMMY_MEETING);
     }
