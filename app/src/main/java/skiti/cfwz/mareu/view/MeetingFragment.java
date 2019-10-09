@@ -30,7 +30,11 @@ public class MeetingFragment extends Fragment {
     private MeetingApiService mApiService;
     private List<Meeting> mMeetings;
     private RecyclerView mRecyclerView;
-
+    private Boolean SortbyDate;
+    private Boolean SortbyPlace;
+    private int SortMinDate;
+    private int SortMaxDate;
+    private String SortSalles;
 
     /**
      * Create and return a new instance
@@ -61,9 +65,28 @@ public class MeetingFragment extends Fragment {
      * Init the List of neighbours
      */
     private void initList() {
-
         mMeetings = mApiService.getMeetings();
+        if (SortbyDate)
+            SortMeetingByDate(mMeetings,SortMinDate,SortMaxDate);
+        if (SortbyPlace)
+            SortMeetingByPlace(mMeetings,SortSalles);
         mRecyclerView.setAdapter(new ListMeetingRecyclerViewAdapter(mMeetings));
+    }
+
+    private List<Meeting> SortMeetingByDate(List<Meeting>meetingsList,int minDate,int maxDate){
+        List<Meeting> smbd = meetingsList;
+        for (int i=0;i<mApiService.getMeetings().size();i++){
+        }
+        return smbd;
+    }
+
+    private List<Meeting> SortMeetingByPlace(List<Meeting>meetingList,String SalleName){
+        List<Meeting> smbp = meetingList;
+        for (int i=0;i<mApiService.getMeetings().size();i++){
+            if (smbp.get(i).getSalle().getName()!=SalleName)
+                smbp.remove(i);
+        }
+        return smbp;
     }
 
     @Override

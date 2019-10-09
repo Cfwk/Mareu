@@ -26,7 +26,6 @@ import skiti.cfwz.mareu.model.Meeting;
  */
 
 public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMeetingRecyclerViewAdapter.ViewHolder> {
-
     private final List<Meeting> mMeetings;
 
     public ListMeetingRecyclerViewAdapter(List<Meeting> items) {
@@ -44,7 +43,8 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Meeting meeting = mMeetings.get(position);
         holder.mMeetingName.setText(meeting.getName());
-        holder.mDescription.setText(meeting.getDescription());
+        if (holder.mDescription.length()<=37)
+        {holder.mDescription.setText(meeting.getDescription().length()+"...");}
         Glide.with(holder.mAvatar.getContext())
                 .load(meeting.getSalle().getColor())
                 .apply(RequestOptions.circleCropTransform())

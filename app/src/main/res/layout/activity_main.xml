@@ -6,13 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".view.ListMeetingActivity">
 
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_primary"
+        android:background="#4E92DF"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -20,15 +17,51 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Ma Réu"
             />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize" />
 
     </android.support.design.widget.AppBarLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical"
+        >
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:text="Filtres"
+            android:textSize="30dp"
+            android:textAlignment="center"/>
+        <view class="android.support.v7.app.AlertController$RecycleListView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+        </view>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Heure Minimum"/>
+            <EditText
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Heure Minimum"/>
+            <EditText
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"

@@ -19,7 +19,6 @@ import java.util.List;
 
 import skiti.cfwz.mareu.R;
 import skiti.cfwz.mareu.controller.DI;
-import skiti.cfwz.mareu.controller.DummyMeetingGenerator;
 import skiti.cfwz.mareu.controller.MeetingApiService;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.Salle;
@@ -105,8 +104,26 @@ public class NewMeetingDialogFragment extends DialogFragment {
     private void addData() {
         if (mCreator.getText()!=null&&mSujet.getText()!=null&&mTime!=null&&mParticipants.getText()!=null) {
             String str = mParticipants.getText().toString();
-            NewMeeting = new Meeting(mSujet.getText().toString(), "11:12", ApiService.getSalles().get(0), mSujet.getText().toString(), mCreator.getText().toString(), DummyMeetingGenerator.getParticipants());
+            NewMeeting = new Meeting(
+                    mSujet.getText().toString(),
+                    ConvertSalle(mSalles.getSelectedItem().toString()),
+                    mSujet.getText().toString(),
+                    mCreator.getText().toString(),
+                    mParticipants.getText().toString(),
+                    mTime.getCurrentHour(),
+                    mTime.getCurrentMinute());
         }else Creation = false;
+    }
+
+    private Salle ConvertSalle(String string) {
+        for (int i = 0 ; i<salles.size(); i++)
+        {
+            System.out.println("tour"+i);
+            if (salles.get(i).getName().contentEquals(string)){
+                return salles.get(i);
+            }
+        }
+        return null;
     }
 
     @Override

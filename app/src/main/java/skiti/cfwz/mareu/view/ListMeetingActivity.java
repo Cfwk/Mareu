@@ -7,6 +7,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import butterknife.BindView;
@@ -22,8 +23,13 @@ public class ListMeetingActivity extends AppCompatActivity {
     public FloatingActionButton mAddButton;
     @BindView(R.id.container)
     ViewPager mViewPager;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     ListMeetingPagerAdapter mPagerAdapter;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

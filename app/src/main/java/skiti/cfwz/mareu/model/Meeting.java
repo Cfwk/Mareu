@@ -1,7 +1,5 @@
 package skiti.cfwz.mareu.model;
 
-import java.util.List;
-
 /**
  * Created by Skiti on 21/08/2019
  */
@@ -9,19 +7,20 @@ import java.util.List;
 public class Meeting {
     private String name;
     private String description;
-    private String time;
+    private Time time;
     private Salle salle;
     private String sujet;
     private String creator;
-    private List<String> participants;
+    private String participants;
 
-    public Meeting(String name,String heure, Salle salle, String sujet,String creator, List<String> participants) {
+    public Meeting(String name, Salle salle, String sujet,String creator, String participants,int Hour,int Minute) {
         this.name = name;
-        this.time = heure;
         this.salle = salle;
         this.sujet = sujet;
         this.participants = participants;
         this.creator = creator;
+        this.time.setHour(Hour);
+        this.time.setMinute(Minute);
     }
     public String getName(){
         String toReturn = sujet + " - " + time +" - "+ creator;
@@ -35,11 +34,11 @@ public class Meeting {
 
     public void setDescription(String description) { this.description = description; }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
@@ -59,11 +58,11 @@ public class Meeting {
         this.sujet = sujet;
     }
 
-    public List<String> getParticipants() {
+    public String getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<String> participants) { this.participants = participants; }
+    public void setParticipants(String participants) { this.participants = participants; }
 
     public String getCreator() { return creator; }
 
