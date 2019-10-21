@@ -39,12 +39,15 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
         return new ViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Meeting meeting = mMeetings.get(position);
         holder.mMeetingName.setText(meeting.getName());
-        if (holder.mDescription.length()<=37)
-        {holder.mDescription.setText(meeting.getDescription().length()+"...");}
+        if (holder.mDescription.length()<37)
+        {holder.mDescription.setText(meeting.getDescription()+"...");}
+        else if (holder.mDescription.length()>=37)
+        {holder.mDescription.setText(meeting.getDescription());}
         Glide.with(holder.mAvatar.getContext())
                 .load(meeting.getSalle().getColor())
                 .apply(RequestOptions.circleCropTransform())

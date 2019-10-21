@@ -8,12 +8,12 @@
     >
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             >
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="Organisateur :"
                 android:textStyle="bold"
                 android:textColor="#000000"
@@ -23,7 +23,7 @@
             <EditText
                 android:id="@+id/creator"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:hint="Nom de l'organisateur"
                 android:inputType="textPersonName"
                 android:textColor="#000000"
@@ -32,12 +32,12 @@
         </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="Salle :"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -47,17 +47,17 @@
         <Spinner
             android:id="@+id/salle"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:prompt="@string/action_settings" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="Participants :"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -67,7 +67,7 @@
         <EditText
             android:id="@+id/participants"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="Email des participants"
             android:inputType="textEmailAddress"
             android:textColor="#000000"
@@ -76,22 +76,12 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="Sujet : "
             android:textStyle="bold"
             android:textColor="#000000"
@@ -101,7 +91,7 @@
         <EditText
             android:id="@+id/sujet"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="Sujet de la reunion"
             android:textColor="#000000"
             android:inputType="text"
@@ -110,27 +100,30 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="Heure : "
             android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="20dp"
             android:gravity="center"
             />
-        <TimePicker
-            android:id="@+id/timepicker"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Sujet de la reunion"
-            android:inputType="numberDecimal"
-            android:timePickerMode="spinner"
-            android:layout_weight="1"
-            />
+        <NumberPicker
+            android:id="@+id/picker_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"></NumberPicker>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:text=" : "/>
+        <NumberPicker
+            android:id="@+id/picker_minute"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"></NumberPicker>
     </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"

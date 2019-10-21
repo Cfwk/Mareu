@@ -20,6 +20,7 @@ import skiti.cfwz.mareu.controller.DI;
 import skiti.cfwz.mareu.controller.MeetingApiService;
 import skiti.cfwz.mareu.model.DeleteMeetingEvent;
 import skiti.cfwz.mareu.model.Meeting;
+import skiti.cfwz.mareu.model.ResetMeetingEvent;
 
 /**
  * Created by Skiti on 22/08/2019
@@ -30,11 +31,6 @@ public class MeetingFragment extends Fragment {
     private MeetingApiService mApiService;
     private List<Meeting> mMeetings;
     private RecyclerView mRecyclerView;
-    private Boolean SortbyDate;
-    private Boolean SortbyPlace;
-    private int SortMinDate;
-    private int SortMaxDate;
-    private String SortSalles;
 
     /**
      * Create and return a new instance
@@ -44,6 +40,7 @@ public class MeetingFragment extends Fragment {
         MeetingFragment fragment = new MeetingFragment();
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,25 +63,7 @@ public class MeetingFragment extends Fragment {
      */
     private void initList() {
         mMeetings = mApiService.getMeetings();
-
-
         mRecyclerView.setAdapter(new ListMeetingRecyclerViewAdapter(mMeetings));
-    }
-
-    private List<Meeting> SortMeetingByDate(List<Meeting>meetingsList,int minDate,int maxDate){
-        List<Meeting> smbd = meetingsList;
-        for (int i=0;i<mApiService.getMeetings().size();i++){
-        }
-        return smbd;
-    }
-
-    private List<Meeting> SortMeetingByPlace(List<Meeting>meetingList,String SalleName){
-        List<Meeting> smbp = meetingList;
-        for (int i=0;i<mApiService.getMeetings().size();i++){
-            if (smbp.get(i).getSalle().getName()!=SalleName)
-                smbp.remove(i);
-        }
-        return smbp;
     }
 
     @Override
@@ -107,6 +86,11 @@ public class MeetingFragment extends Fragment {
     @Subscribe
     public void onDeleteMeeting(DeleteMeetingEvent event) {
         mApiService.deleteMeetings(event.mMeeting);
+        initList();
+    }
+    @Subscribe
+    public void onResetMeeting(ResetMeetingEvent event) {
+        mApiService.resetFilter();
         initList();
     }
 }

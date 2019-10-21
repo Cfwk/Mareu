@@ -11,8 +11,8 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.TimePicker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,14 +33,14 @@ public class NewMeetingDialogFragment extends DialogFragment {
     private Spinner mSalles;
     private EditText mCreator;
     private EditText mSujet;
-    private TimePicker mTime;
     private EditText mParticipants;
     private Button mButton;
     private MeetingApiService ApiService;
     private List<Salle> salles;
     private Boolean Creation = true;
     private Meeting NewMeeting;
-    private List<String>Participants;
+    private NumberPicker mTime_Hour;
+    private NumberPicker mTime_Minute;
 
     public interface NewMeetingDialogListener {
         void onFinishEditDialog(String inputText);
@@ -52,8 +52,6 @@ public class NewMeetingDialogFragment extends DialogFragment {
     public static NewMeetingDialogFragment newInstance(String title) {
         NewMeetingDialogFragment frag = new NewMeetingDialogFragment();
         Bundle args = new Bundle();
-        args.putString("title", title);
-        frag.setArguments(args);
         return frag;
     }
 
@@ -79,12 +77,11 @@ public class NewMeetingDialogFragment extends DialogFragment {
         mCreator = (EditText) view.findViewById(R.id.creator);
         mParticipants = (EditText) view.findViewById(R.id.participants);
         mSujet = (EditText) view.findViewById(R.id.sujet);
-        mTime = (TimePicker) view.findViewById(R.id.timepicker);
         mSalles = (Spinner) view.findViewById(R.id.salle);
         mButton = (Button) view.findViewById(R.id.newMeeting);
+        mTime_Hour = (NumberPicker) view.findViewById(R.id.picker_hour);
+        mTime_Minute = (NumberPicker) view.findViewById(R.id.picker_minute);
         // Fetch arguments from bundle and set title
-        String title = getArguments().getString("title", "Enter Name");
-        getDialog().setTitle(title);
         // Show soft keyboard automatically and request focus to field
 
 
@@ -99,26 +96,26 @@ public class NewMeetingDialogFragment extends DialogFragment {
             }
         });
         setSpinner();
+        setNumberPicker();
     }
 
     private void addData() {
-        if (mCreator.getText()!=null&&mSujet.getText()!=null&&mTime!=null&&mParticipants.getText()!=null) {
-            String str = mParticipants.getText().toString();
+        if (mCreator.getText()!=null&&mSujet.getText()!=null&&mParticipants.getText()!=null) {
             NewMeeting = new Meeting(
                     mSujet.getText().toString(),
                     ConvertSalle(mSalles.getSelectedItem().toString()),
                     mSujet.getText().toString(),
                     mCreator.getText().toString(),
                     mParticipants.getText().toString(),
-                    mTime.getCurrentHour(),
-                    mTime.getCurrentMinute());
+                    mTime_Hour.getValue(),
+                    mTime_Minute.getValue());
+            Creation = true;
         }else Creation = false;
     }
 
     private Salle ConvertSalle(String string) {
         for (int i = 0 ; i<salles.size(); i++)
         {
-            System.out.println("tour"+i);
             if (salles.get(i).getName().contentEquals(string)){
                 return salles.get(i);
             }
@@ -155,6 +152,14 @@ public class NewMeetingDialogFragment extends DialogFragment {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         mSalles.setAdapter(dataAdapter);
+    }
+
+    private void setNumberPicker() {
+        mTime_Hour.setMinValue(0);
+        mTime_Minute.setMinValue(0);
+
+        mTime_Hour.setMaxValue(23);
+        mTime_Minute.setMaxValue(59);
     }
 
     @Override

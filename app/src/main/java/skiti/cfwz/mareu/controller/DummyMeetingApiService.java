@@ -1,7 +1,10 @@
 package skiti.cfwz.mareu.controller;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
+import skiti.cfwz.mareu.model.DeleteMeetingEvent;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.Salle;
 import skiti.cfwz.mareu.model.Time;
@@ -14,6 +17,8 @@ public class DummyMeetingApiService implements MeetingApiService {
 
     List<Meeting> Meetings = DummyMeetingGenerator.generateMeetings();
     List<Salle> Salles = DummySallesGenerator.generateSalles();
+    List<Meeting> MeetingsStock = DummyMeetingGenerator.generateMeetings();
+    Boolean Filter = false;
 
     @Override
     public List<Meeting> getMeetings() { return Meetings;}
@@ -30,29 +35,34 @@ public class DummyMeetingApiService implements MeetingApiService {
     }
 
     @Override
-    public List<Meeting> sortDateMeetings(List<Meeting> meetingsToSort, Time minDate, Time maxDate) {
-        if (meetingsToSort!=null)
-        {
-        for (int i=0;i<meetingsToSort.size();i++)
-            {
-            //if (meetingsToSort.get(i).getTime().getHour()<minDate.getHour()||
+    public void sortDateMeetings(Time minDate, Time maxDate) {
+        Filter=true;
+            for (int i = 0; i < Meetings.size(); i++) {
+                if (Meetings.get(i).getTime().getComparator()<minDate.getComparator()||Meetings.get(i).getTime().getComparator()>maxDate.getComparator()) {
+                    MeetingsStock.add(Meetings.get(i));
+                    EventBus.getDefault().post(new DeleteMeetingEvent(Meetings.get(i)));
+                    i=0;}
+                }
             }
-        }
-        return meetingsToSort;
+
+    @Override
+    public void sortSalleMeetings(String SalleName) {
+        Filter=true;
+            for (int i=0;i<Meetings.size();i++)
+            { if (!Meetings.get(i).getSalle().getName().contains(SalleName.toLowerCase())){
+                MeetingsStock.add(Meetings.get(i));
+                EventBus.getDefault().post(new DeleteMeetingEvent(Meetings.get(i)));
+                i=0; }}
     }
 
     @Override
-    public List<Meeting> sortSalleMeetings(List<Meeting> meetingsToSort,String SalleName) {
-        if (meetingsToSort!=null)
-        {
-            for (int i=0;i<meetingsToSort.size();i++)
-            {
-                if (meetingsToSort.get(i).getSalle().getName()!=SalleName)
-                    meetingsToSort.remove(i);
-            }
+    public void resetFilter() {
+        if (Filter==true) {
+            Meetings.addAll(MeetingsStock);
+            MeetingsStock.removeAll(MeetingsStock);
+            Filter = false;}
         }
-        return meetingsToSort;
     }
 
 
-}
+

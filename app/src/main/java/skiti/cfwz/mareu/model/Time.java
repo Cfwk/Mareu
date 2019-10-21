@@ -8,16 +8,25 @@ public class Time {
     Integer Hour;
     Integer Minute;
     String Time;
+    int Comparator;
 
 
     public Time(Integer hour, Integer minute) {
         Hour = hour;
         Minute = minute;
+        if (Minute<10)
+        Time = hour+":0"+minute;
+        else
         Time = hour+":"+minute;
+        Comparator=Hour*60+Minute;
     }
 
     public Integer getHour() {
         return Hour;
+    }
+
+    public int getComparator(){
+        return Comparator;
     }
 
     public void setHour(Integer hour) {

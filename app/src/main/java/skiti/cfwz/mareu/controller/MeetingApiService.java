@@ -20,7 +20,9 @@ public interface MeetingApiService {
 
     List<Salle> getSalles();
 
-    List<Meeting>sortDateMeetings(List<Meeting> meetingsToSort, Time minDate, Time maxDate);
+    void sortDateMeetings(Time minDate, Time maxDate);
 
-    List<Meeting>sortSalleMeetings(List<Meeting> meetingsToSort,String SalleName);
+    void sortSalleMeetings(String SalleName);
+
+    void resetFilter();
 }

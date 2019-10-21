@@ -20,7 +20,6 @@ import skiti.cfwz.mareu.utils.DeleteViewAction;
 import skiti.cfwz.mareu.view.ListMeetingActivity;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
@@ -95,26 +94,5 @@ public class ExampleInstrumentedTest {
         // Then : the number of element is 11
         onView(allOf(withId(R.id.list_meeting), isDisplayed()))
                 .check(withItemCount(ITEMS_COUNT-1));
-    }
-
-
-    @Test
-    public void LisMeetingsItemName_shouldHaveTheGoodMeetingName() {
-        onView(allOf(withId(R.id.list_meeting), isDisplayed()))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
-        onView(allOf(withId(R.id.nameHeader), isDisplayed()))
-                .check(matches(isDisplayed()));
-
-
-    }
-
-    @Test
-    public void ProfileNeighbourActivity_shouldShowTheNeighbourNameOfNeighbourHeaderName() {
-
-        onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
-        onView(allOf(withId(R.id.nameHeader), isDisplayed()))
-                .check(matches(withText(Neighbours.get(1).getName())));
-
     }
 }
