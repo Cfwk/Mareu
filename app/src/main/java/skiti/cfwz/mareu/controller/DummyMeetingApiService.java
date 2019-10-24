@@ -57,7 +57,7 @@ public class DummyMeetingApiService implements MeetingApiService {
 
     @Override
     public void resetFilter() {
-        if (Filter==true) {
+        if (Filter) {
             Meetings.addAll(MeetingsStock);
             MeetingsStock.removeAll(MeetingsStock);
             Filter = false;}

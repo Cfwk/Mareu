@@ -62,7 +62,6 @@ public class ListMeetingActivity extends AppCompatActivity {
 
     ListMeetingPagerAdapter mPagerAdapter;
     MeetingApiService mApiService= DI.getMeetingApiService();
-    Boolean Filter=false;
 
 
 

@@ -21,13 +21,9 @@ public class Meeting {
         this.creator = creator;
         this.time = new Time(Hour,Minute);
     }
-    public String getName(){
-        String toReturn = sujet + " - " + time.Time +" - "+ creator;
-        return toReturn;}
+    public String getName(){ return sujet + " - " + time.Time +" - "+ creator;}
 
-    public String getDescription(){
-        String toReturn = participants.toString();
-        return toReturn;}
+    public String getDescription(){ return participants;}
 
     public void setName(String nom) { this.name = nom; }
 
