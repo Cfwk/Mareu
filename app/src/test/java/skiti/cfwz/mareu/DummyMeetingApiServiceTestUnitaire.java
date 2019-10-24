@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public class DummyMeetingApiServiceTestUnitaire {
     private MeetingApiService service;
 
     @Before
@@ -73,16 +73,35 @@ public class ExampleUnitTest {
 
     @Test
     public void sortMeetingsByNameWithSuccess() {
-        Meeting meetingToDelete = service.getMeetings().get(0);
-        service.deleteMeetings(meetingToDelete);
-        assertFalse(service.getMeetings().contains(meetingToDelete));
+        List<Meeting> meetings = service.getMeetings();
+        Meeting expectedMeeting = new Meeting("Meeting de test1",service.getSalles().get(0),"Sujet de test1","Test1","Test1,Test2,Test3",10,30);
+        Meeting notExpectedMeeting = new Meeting("Meeting de test1",service.getSalles().get(1),"Sujet de test1","Test1","Test1,Test2,Test3",10,30);
+        meetings.add(expectedMeeting);
+        meetings.add(notExpectedMeeting);
+        assertTrue(meetings.contains(expectedMeeting));
+        assertTrue(meetings.contains(notExpectedMeeting));
+        String SalleToSort = "rouge";
+        service.sortSalleMeetings(SalleToSort);
+        assertTrue(meetings.contains(expectedMeeting));
+        assertFalse(meetings.contains(notExpectedMeeting));
     }
 
     @Test
     public void resetMeetingsWithSuccess() {
-        Meeting meetingToDelete = service.getMeetings().get(0);
-        service.deleteMeetings(meetingToDelete);
-        assertFalse(service.getMeetings().contains(meetingToDelete));
+        List<Meeting> meetings = service.getMeetings();
+        Meeting Meeting2 = new Meeting("Meeting de test1",service.getSalles().get(1),"Sujet de test1","Test1","Test1,Test2,Test3",10,30);
+        Meeting Meeting1 = new Meeting("Meeting de test1",service.getSalles().get(1),"Sujet de test1","Test1","Test1,Test2,Test3",10,30);
+        meetings.add(Meeting1);
+        meetings.add(Meeting2);
+        assertTrue(meetings.contains(Meeting1));
+        assertTrue(meetings.contains(Meeting2));
+        String SalleToSort = "rouge";
+        service.sortSalleMeetings(SalleToSort);
+        assertFalse(meetings.contains(Meeting1));
+        assertFalse(meetings.contains(Meeting2));
+        service.resetFilter();
+        assertTrue(meetings.contains(Meeting1));
+        assertTrue(meetings.contains(Meeting2));
     }
 
     }

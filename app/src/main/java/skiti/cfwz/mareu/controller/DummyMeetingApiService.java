@@ -1,10 +1,7 @@
 package skiti.cfwz.mareu.controller;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.List;
 
-import skiti.cfwz.mareu.model.DeleteMeetingEvent;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.Salle;
 import skiti.cfwz.mareu.model.Time;
@@ -40,7 +37,7 @@ public class DummyMeetingApiService implements MeetingApiService {
             for (int i = 0; i < Meetings.size(); i++) {
                 if (Meetings.get(i).getTime().getComparator()<minDate.getComparator()||Meetings.get(i).getTime().getComparator()>maxDate.getComparator()) {
                     MeetingsStock.add(Meetings.get(i));
-                    EventBus.getDefault().post(new DeleteMeetingEvent(Meetings.get(i)));
+                    Meetings.remove(Meetings.get(i));
                     i=0;}
                 }
             }
@@ -51,7 +48,7 @@ public class DummyMeetingApiService implements MeetingApiService {
             for (int i=0;i<Meetings.size();i++)
             { if (!Meetings.get(i).getSalle().getName().contains(SalleName.toLowerCase())){
                 MeetingsStock.add(Meetings.get(i));
-                EventBus.getDefault().post(new DeleteMeetingEvent(Meetings.get(i)));
+                Meetings.remove(Meetings.get(i));
                 i=0; }}
     }
 

@@ -19,6 +19,7 @@ import skiti.cfwz.mareu.R;
 import skiti.cfwz.mareu.controller.DI;
 import skiti.cfwz.mareu.controller.MeetingApiService;
 import skiti.cfwz.mareu.model.DeleteMeetingEvent;
+import skiti.cfwz.mareu.model.FilterMeetingEvent;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.ResetMeetingEvent;
 
@@ -93,4 +94,9 @@ public class MeetingFragment extends Fragment {
         mApiService.resetFilter();
         initList();
     }
+    @Subscribe
+    public void onFilterMeeting(FilterMeetingEvent event){
+        initList();
+    }
+
 }

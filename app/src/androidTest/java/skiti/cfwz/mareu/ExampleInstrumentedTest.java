@@ -104,7 +104,9 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void FilterOption_resetFilter_shouldResetList() {
-
+        mMeetingApiService.resetFilter();
+        onView(allOf(withId(R.id.list_meeting), isDisplayed()))
+                .check(withItemCount(mMeetingApiService.getMeetings().size()));
     }
 
 

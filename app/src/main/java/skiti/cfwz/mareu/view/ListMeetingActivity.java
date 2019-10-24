@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 import skiti.cfwz.mareu.R;
 import skiti.cfwz.mareu.controller.DI;
 import skiti.cfwz.mareu.controller.MeetingApiService;
+import skiti.cfwz.mareu.model.FilterMeetingEvent;
 import skiti.cfwz.mareu.model.ResetMeetingEvent;
 import skiti.cfwz.mareu.model.Time;
 
@@ -87,6 +88,7 @@ public class ListMeetingActivity extends AppCompatActivity {
                 mApiService.sortDateMeetings(minTime,maxTime);
                 if (mSort_salles.getText().length()>1)
                 mApiService.sortSalleMeetings(mSort_salles.getText().toString());
+                EventBus.getDefault().post(new FilterMeetingEvent());
             }
         });
         mResetButton.setOnClickListener(new View.OnClickListener() {
