@@ -8,13 +8,13 @@ public class NewMeetingEvent {
     /**
      * Meeting to add
      */
-    public Meeting mMeeting;
+    public Meeting meeting;
 
     /**
      * Constructor.
      * @param meeting
      */
     public NewMeetingEvent(Meeting meeting) {
-        this.mMeeting = meeting;
+        this.meeting = meeting;
     }
 }

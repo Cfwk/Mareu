@@ -12,52 +12,52 @@ import skiti.cfwz.mareu.model.Time;
 
 public class DummyMeetingApiService implements MeetingApiService {
 
-    List<Meeting> Meetings = DummyMeetingGenerator.generateMeetings();
-    List<Salle> Salles = DummySallesGenerator.generateSalles();
-    List<Meeting> MeetingsStock = DummyMeetingGenerator.generateMeetings();
-    Boolean Filter = false;
+    private List<Meeting> meetings = DummyMeetingGenerator.generateMeetings();
+    private List<Salle> salles = DummySallesGenerator.generateSalles();
+    private List<Meeting> meetingsStock = DummyMeetingGenerator.generateMeetings();
+    private Boolean filter = false;
 
     @Override
-    public List<Meeting> getMeetings() { return Meetings;}
+    public List<Meeting> getMeetings() { return meetings;}
 
     @Override
-    public  void deleteMeetings(Meeting meeting){Meetings.remove(meeting);}
+    public  void deleteMeetings(Meeting meeting){meetings.remove(meeting);}
 
     @Override
-    public void addMeeting(Meeting meeting) {Meetings.add(meeting);}
+    public void addMeeting(Meeting meeting) {meetings.add(meeting);}
 
     @Override
     public List<Salle> getSalles() {
-        return Salles;
+        return salles;
     }
 
     @Override
     public void sortDateMeetings(Time minDate, Time maxDate) {
-        Filter=true;
-            for (int i = 0; i < Meetings.size(); i++) {
-                if (Meetings.get(i).getTime().getComparator()<minDate.getComparator()||Meetings.get(i).getTime().getComparator()>maxDate.getComparator()) {
-                    MeetingsStock.add(Meetings.get(i));
-                    Meetings.remove(Meetings.get(i));
+        filter=true;
+            for (int i = 0; i < meetings.size(); i++) {
+                if (meetings.get(i).getTime().getComparator()<minDate.getComparator()||meetings.get(i).getTime().getComparator()>maxDate.getComparator()) {
+                    meetingsStock.add(meetings.get(i));
+                    meetings.remove(meetings.get(i));
                     i=0;}
                 }
             }
 
     @Override
-    public void sortSalleMeetings(String SalleName) {
-        Filter=true;
-            for (int i=0;i<Meetings.size();i++)
-            { if (!Meetings.get(i).getSalle().getName().contains(SalleName.toLowerCase())){
-                MeetingsStock.add(Meetings.get(i));
-                Meetings.remove(Meetings.get(i));
+    public void sortSalleMeetings(String salleName) {
+        filter=true;
+            for (int i=0;i<meetings.size();i++)
+            { if (!meetings.get(i).getSalle().getName().contains(salleName.toLowerCase())){
+                meetingsStock.add(meetings.get(i));
+                meetings.remove(meetings.get(i));
                 i=0; }}
     }
 
     @Override
     public void resetFilter() {
-        if (Filter) {
-            Meetings.addAll(MeetingsStock);
-            MeetingsStock.removeAll(MeetingsStock);
-            Filter = false;}
+        if (filter) {
+            meetings.addAll(meetingsStock);
+            meetingsStock.removeAll(meetingsStock);
+            filter = false;}
         }
     }
 

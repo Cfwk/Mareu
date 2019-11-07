@@ -10,7 +10,6 @@ public class Time {
     String Time;
     int Comparator;
 
-
     public Time(Integer hour, Integer minute) {
         Hour = hour;
         Minute = minute;
@@ -48,6 +47,4 @@ public class Time {
     public void setTime(String time) {
         Time = time;
     }
-
-
 }

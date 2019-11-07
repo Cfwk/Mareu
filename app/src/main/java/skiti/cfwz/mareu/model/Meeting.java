@@ -19,8 +19,8 @@ public class Meeting {
         this.sujet = sujet;
         this.participants = participants;
         this.creator = creator;
-        this.time = new Time(Hour,Minute);
-    }
+        this.time = new Time(Hour,Minute); }
+
     public String getName(){ return sujet + " - " + time.Time +" - "+ creator;}
 
     public String getDescription(){ return participants;}
@@ -61,6 +61,5 @@ public class Meeting {
 
     public String getCreator() { return creator; }
 
-    public void setCreator(String creator) { this.creator = creator;
-    }
+    public void setCreator(String creator) { this.creator = creator; }
 }

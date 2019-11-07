@@ -26,23 +26,21 @@ import skiti.cfwz.mareu.model.Meeting;
  */
 
 public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMeetingRecyclerViewAdapter.ViewHolder> {
-    private final List<Meeting> mMeetings;
+    private final List<Meeting> meetings;
 
     public ListMeetingRecyclerViewAdapter(List<Meeting> items) {
-        mMeetings = items;
+        meetings = items;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_meeting, parent, false);
-        return new ViewHolder(view);
-    }
-
+        return new ViewHolder(view); }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        final Meeting meeting = mMeetings.get(position);
+        final Meeting meeting = meetings.get(position);
         holder.mMeetingName.setText(meeting.getName());
         if (holder.mDescription.length()<37)
         {holder.mDescription.setText(meeting.getDescription()+"...");}
@@ -63,7 +61,7 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
 
     @Override
     public int getItemCount() {
-        return mMeetings.size();
+        return meetings.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

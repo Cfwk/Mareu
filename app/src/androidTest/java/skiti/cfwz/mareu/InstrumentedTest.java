@@ -33,7 +33,7 @@ import static skiti.cfwz.mareu.utils.RecyclerViewItemCountAssertion.withItemCoun
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class InstrumentedTest {
     // This is fixed
     private MeetingApiService mMeetingApiService=DI.getMeetingApiService();
     private Meeting meeting1 = new Meeting("Meeting de test3",mMeetingApiService.getSalles().get(1),"Sujet de test3","Test3","Test7,Test8,Test9",18,0);

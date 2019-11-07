@@ -5,36 +5,34 @@ package skiti.cfwz.mareu.model;
  */
 
 public class Salle {
-    private String Name;
-    private int Lieu;
-    private int AvatarColor;
+    private String name;
+    private int lieu;
+    private int avatarColor;
 
     public Salle(String name, int lieu, int avatarColor) {
-        Name = name;
-        Lieu = lieu;
-        AvatarColor = avatarColor;
-    }
+        this.name = name;
+        this.lieu = lieu;
+        avatarColor = avatarColor; }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public int getLieu() {
-        return Lieu;
+        return lieu;
     }
 
     public void setLieu(int lieu) {
-        Lieu = lieu;
+        this.lieu = lieu;
     }
 
     public int getColor() {
-        return AvatarColor;
+        return avatarColor;
     }
 
-    public void setColor(int avatarColor) { AvatarColor = avatarColor;
-    }
+    public void setColor(int avatarColor) { avatarColor = avatarColor; }
 }
