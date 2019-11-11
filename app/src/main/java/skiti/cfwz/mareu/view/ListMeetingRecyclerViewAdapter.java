@@ -43,9 +43,9 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
         final Meeting meeting = meetings.get(position);
         holder.mMeetingName.setText(meeting.getName());
         if (holder.mDescription.length()<37)
-        {holder.mDescription.setText(meeting.getDescription()+"...");}
+        {holder.mDescription.setText(meeting.getParticipants()+"...");}
         else if (holder.mDescription.length()>=37)
-        {holder.mDescription.setText(meeting.getDescription());}
+        {holder.mDescription.setText(meeting.getParticipants());}
         Glide.with(holder.mAvatar.getContext())
                 .load(meeting.getSalle().getColor())
                 .apply(RequestOptions.circleCropTransform())

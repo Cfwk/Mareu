@@ -1,10 +1,11 @@
 package skiti.cfwz.mareu.controller;
 
+import org.joda.time.LocalTime;
+
 import java.util.List;
 
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.Salle;
-import skiti.cfwz.mareu.model.Time;
 
 /**
  * Created by Skiti on 21/08/2019
@@ -32,13 +33,13 @@ public class DummyMeetingApiService implements MeetingApiService {
     }
 
     @Override
-    public void sortDateMeetings(Time minDate, Time maxDate) {
+    public void sortDateMeetings(LocalTime minDate, LocalTime maxDate) {
         filter=true;
             for (int i = 0; i < meetings.size(); i++) {
-                if (meetings.get(i).getTime().getComparator()<minDate.getComparator()||meetings.get(i).getTime().getComparator()>maxDate.getComparator()) {
+                if (meetings.get(i).getTime().isBefore(minDate)||meetings.get(i).getTime().isAfter(maxDate)) {
                     meetingsStock.add(meetings.get(i));
                     meetings.remove(meetings.get(i));
-                    i=0;}
+                    i--;}
                 }
             }
 

@@ -13,7 +13,7 @@ import skiti.cfwz.mareu.model.Meeting;
 abstract class DummyMeetingGenerator {
     private static List<Meeting> DUMMY_MEETING = Arrays.asList(
             );
-    static List<Meeting> generateMeetings() {
+    public static List<Meeting> generateMeetings() {
         return new ArrayList<Meeting>(DUMMY_MEETING);
     }
 }

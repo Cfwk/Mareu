@@ -1,6 +1,7 @@
 package skiti.cfwz.mareu;
 
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
+import org.joda.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +12,6 @@ import skiti.cfwz.mareu.controller.DummySallesGenerator;
 import skiti.cfwz.mareu.controller.MeetingApiService;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.Salle;
-import skiti.cfwz.mareu.model.Time;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -44,7 +44,7 @@ public class DummyMeetingApiServiceTestUnitaire {
     @Test
     public void getSallesWithSuccess() {
         List<Salle> salles = service.getSalles();
-        List<Salle> expectedSalles = DummySallesGenerator.DUMMY_SALLES;
+        List<Salle> expectedSalles = DummySallesGenerator.generateSalles();
         assertThat(salles, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSalles.toArray()));
     }
 
@@ -64,8 +64,8 @@ public class DummyMeetingApiServiceTestUnitaire {
         meetings.add(notExpectedMeeting);
         assertTrue(meetings.contains(expectedMeeting));
         assertTrue(meetings.contains(notExpectedMeeting));
-        Time minTime = new Time(10,0);
-        Time maxTime = new Time(13,0);
+        LocalTime minTime = new LocalTime(10,0);
+        LocalTime maxTime = new LocalTime(13,0);
         service.sortDateMeetings(minTime,maxTime);
         assertTrue(meetings.contains(expectedMeeting));
         assertFalse(meetings.contains(notExpectedMeeting));

@@ -86,7 +86,7 @@ public class MeetingFragment extends Fragment {
      */
     @Subscribe
     public void onDeleteMeeting(DeleteMeetingEvent event) {
-        mApiService.deleteMeetings(event.mMeeting);
+        mApiService.deleteMeetings(event.meeting);
         initList();
     }
     @Subscribe

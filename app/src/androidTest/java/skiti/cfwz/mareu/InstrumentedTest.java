@@ -4,6 +4,7 @@ import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.joda.time.LocalTime;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,7 +13,6 @@ import org.junit.runner.RunWith;
 import skiti.cfwz.mareu.controller.DI;
 import skiti.cfwz.mareu.controller.MeetingApiService;
 import skiti.cfwz.mareu.model.Meeting;
-import skiti.cfwz.mareu.model.Time;
 import skiti.cfwz.mareu.utils.DeleteViewAction;
 import skiti.cfwz.mareu.view.ListMeetingActivity;
 
@@ -85,8 +85,8 @@ public class InstrumentedTest {
 
     @Test
     public void FilterOption_sortByDate_shouldSortItem() {
-        Time minTime = new Time(10,0);
-        Time maxTime = new Time(13,0);
+        LocalTime minTime = new LocalTime(10,0);
+        LocalTime maxTime = new LocalTime(13,0);
         mMeetingApiService.sortDateMeetings(minTime,maxTime);
         onView(allOf(withId(R.id.list_meeting), isDisplayed()))
                 .check(withItemCount(mMeetingApiService.getMeetings().size()));

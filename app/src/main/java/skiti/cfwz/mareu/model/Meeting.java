@@ -1,13 +1,15 @@
 package skiti.cfwz.mareu.model;
 
+import org.joda.time.LocalDateTime;
+import org.joda.time.LocalTime;
+
 /**
  * Created by Skiti on 21/08/2019
  */
 
 public class Meeting {
     private String name;
-    private String description;
-    private Time time;
+    private LocalTime time;
     private Salle salle;
     private String sujet;
     private String creator;
@@ -19,21 +21,17 @@ public class Meeting {
         this.sujet = sujet;
         this.participants = participants;
         this.creator = creator;
-        this.time = new Time(Hour,Minute); }
+        this.time = new LocalTime(Hour,Minute); }
 
-    public String getName(){ return sujet + " - " + time.Time +" - "+ creator;}
-
-    public String getDescription(){ return participants;}
+    public String getName(){ return sujet + " - " + time.getHourOfDay()+":"+time.getMinuteOfHour() +" - "+ creator;}
 
     public void setName(String nom) { this.name = nom; }
 
-    public void setDescription(String description) { this.description = description; }
-
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 

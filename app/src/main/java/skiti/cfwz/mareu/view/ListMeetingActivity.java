@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import org.greenrobot.eventbus.EventBus;
+import org.joda.time.LocalTime;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import skiti.cfwz.mareu.R;
@@ -23,7 +25,7 @@ import skiti.cfwz.mareu.controller.DI;
 import skiti.cfwz.mareu.controller.MeetingApiService;
 import skiti.cfwz.mareu.model.FilterMeetingEvent;
 import skiti.cfwz.mareu.model.ResetMeetingEvent;
-import skiti.cfwz.mareu.model.Time;
+
 /**
  * Created by Skiti on 21/08/2019
  */
@@ -68,9 +70,9 @@ public class ListMeetingActivity extends AppCompatActivity {
         mFilterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Time minTime = new Time(mHour_min.getValue(),mMinutes_min.getValue());
-                Time maxTime = new Time(mHour_max.getValue(),mMinutes_max.getValue());
-                if (minTime.getComparator()<maxTime.getComparator())
+                LocalTime minTime = new LocalTime(mHour_min.getValue(),mMinutes_min.getValue());
+                LocalTime maxTime = new LocalTime(mHour_max.getValue(),mMinutes_max.getValue());
+                if (minTime.isBefore(maxTime))
                 apiService.sortDateMeetings(minTime,maxTime);
                 if (mSort_salles.getText().length()>1)
                 apiService.sortSalleMeetings(mSort_salles.getText().toString());

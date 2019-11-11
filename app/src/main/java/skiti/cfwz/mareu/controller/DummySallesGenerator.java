@@ -13,7 +13,7 @@ import skiti.cfwz.mareu.model.Salle;
 
 public abstract class DummySallesGenerator {
 
-    public static List<Salle> DUMMY_SALLES = Arrays.asList(
+    private static List<Salle> DUMMY_SALLES = Arrays.asList(
             new Salle("Salle rouge",1,R.drawable.ic_salle_rouge_24dp),
             new Salle("Salle verte",2,R.drawable.ic_salle_verte_24dp),
             new Salle("Salle bleu",3,R.drawable.ic_salle_bleu_24dp),
@@ -26,7 +26,7 @@ public abstract class DummySallesGenerator {
             new Salle("Salle rose",10,R.drawable.ic_salle_rose_24dp)
     );
 
-    static List<Salle> generateSalles() {
+    public static List<Salle> generateSalles() {
         return new ArrayList<>(DUMMY_SALLES);
     }
 }
