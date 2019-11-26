@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import skiti.cfwz.mareu.controller.MeetingFragment;
+
 /**
  * Created by Skiti on 26/09/2019
  */

@@ -10,11 +10,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import skiti.cfwz.mareu.controller.DI;
-import skiti.cfwz.mareu.controller.MeetingApiService;
+import skiti.cfwz.mareu.service.DI;
+import skiti.cfwz.mareu.service.MeetingApiService;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.utils.DeleteViewAction;
-import skiti.cfwz.mareu.view.ListMeetingActivity;
+import skiti.cfwz.mareu.controller.ListMeetingActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;

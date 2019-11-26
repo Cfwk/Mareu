@@ -12,7 +12,7 @@ public class Salle {
     public Salle(String name, int lieu, int avatarColor) {
         this.name = name;
         this.lieu = lieu;
-        avatarColor = avatarColor; }
+        this.avatarColor = avatarColor; }
 
     public String getName() {
         return name;

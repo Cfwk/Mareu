@@ -1,4 +1,4 @@
-package skiti.cfwz.mareu.controller;
+package skiti.cfwz.mareu.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;

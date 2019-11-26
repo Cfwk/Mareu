@@ -1,4 +1,4 @@
-package skiti.cfwz.mareu.view;
+package skiti.cfwz.mareu.controller;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,12 +16,13 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.List;
 
 import skiti.cfwz.mareu.R;
-import skiti.cfwz.mareu.controller.DI;
-import skiti.cfwz.mareu.controller.MeetingApiService;
 import skiti.cfwz.mareu.model.DeleteMeetingEvent;
 import skiti.cfwz.mareu.model.FilterMeetingEvent;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.ResetMeetingEvent;
+import skiti.cfwz.mareu.service.DI;
+import skiti.cfwz.mareu.service.MeetingApiService;
+import skiti.cfwz.mareu.view.ListMeetingRecyclerViewAdapter;
 
 /**
  * Created by Skiti on 22/08/2019

@@ -1,4 +1,4 @@
-package skiti.cfwz.mareu.view;
+package skiti.cfwz.mareu.controller;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -18,10 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import skiti.cfwz.mareu.R;
-import skiti.cfwz.mareu.controller.DI;
-import skiti.cfwz.mareu.controller.MeetingApiService;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.Salle;
+import skiti.cfwz.mareu.service.DI;
+import skiti.cfwz.mareu.service.MeetingApiService;
 
 /**
  * Created by Skiti on 21/08/2019

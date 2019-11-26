@@ -1,4 +1,4 @@
-package skiti.cfwz.mareu.view;
+package skiti.cfwz.mareu.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,10 +21,11 @@ import org.joda.time.LocalTime;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import skiti.cfwz.mareu.R;
-import skiti.cfwz.mareu.controller.DI;
-import skiti.cfwz.mareu.controller.MeetingApiService;
 import skiti.cfwz.mareu.model.FilterMeetingEvent;
 import skiti.cfwz.mareu.model.ResetMeetingEvent;
+import skiti.cfwz.mareu.service.DI;
+import skiti.cfwz.mareu.service.MeetingApiService;
+import skiti.cfwz.mareu.view.ListMeetingPagerAdapter;
 
 /**
  * Created by Skiti on 21/08/2019

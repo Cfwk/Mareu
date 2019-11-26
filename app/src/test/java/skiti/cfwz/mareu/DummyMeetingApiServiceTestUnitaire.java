@@ -7,9 +7,9 @@ import org.junit.Test;
 
 import java.util.List;
 
-import skiti.cfwz.mareu.controller.DI;
-import skiti.cfwz.mareu.controller.DummySallesGenerator;
-import skiti.cfwz.mareu.controller.MeetingApiService;
+import skiti.cfwz.mareu.service.DI;
+import skiti.cfwz.mareu.service.DummySallesGenerator;
+import skiti.cfwz.mareu.service.MeetingApiService;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.Salle;
 

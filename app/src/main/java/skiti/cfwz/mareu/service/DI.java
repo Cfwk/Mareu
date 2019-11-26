@@ -1,4 +1,4 @@
-package skiti.cfwz.mareu.controller;
+package skiti.cfwz.mareu.service;
 
 /**
  * Created by Skiti on 22/08/2019

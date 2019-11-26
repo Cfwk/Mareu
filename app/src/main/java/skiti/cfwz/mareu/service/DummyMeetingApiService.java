@@ -1,4 +1,4 @@
-package skiti.cfwz.mareu.controller;
+package skiti.cfwz.mareu.service;
 
 import org.joda.time.LocalTime;
 
@@ -50,7 +50,7 @@ public class DummyMeetingApiService implements MeetingApiService {
             { if (!meetings.get(i).getSalle().getName().contains(salleName.toLowerCase())){
                 meetingsStock.add(meetings.get(i));
                 meetings.remove(meetings.get(i));
-                i=0; }}
+                i--; }}
     }
 
     @Override
