@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import skiti.cfwz.mareu.R;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.Salle;
@@ -28,19 +29,18 @@ import skiti.cfwz.mareu.service.MeetingApiService;
  */
 
 public class NewMeetingDialogFragment extends DialogFragment {
-
-
     private Spinner mSalles;
     private EditText mCreator;
     private EditText mSujet;
     private EditText mParticipants;
     private Button mButton;
-    private MeetingApiService ApiService;
+
+    private MeetingApiService apiService;
     private List<Salle> salles;
-    private Boolean Creation = true;
-    private Meeting NewMeeting;
-    private NumberPicker mTime_Hour;
-    private NumberPicker mTime_Minute;
+    private Boolean creation = true;
+    private Meeting newMeeting;
+    private NumberPicker timeHour;
+    private NumberPicker timeMinute;
 
     public interface NewMeetingDialogListener {
         void onFinishEditDialog(String inputText);
@@ -58,8 +58,8 @@ public class NewMeetingDialogFragment extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ApiService = DI.getMeetingApiService();
-        salles = ApiService.getSalles();
+        apiService = DI.getMeetingApiService();
+        salles = apiService.getSalles();
 
     }
 
@@ -79,8 +79,8 @@ public class NewMeetingDialogFragment extends DialogFragment {
         mSujet = (EditText) view.findViewById(R.id.sujet);
         mSalles = (Spinner) view.findViewById(R.id.salle);
         mButton = (Button) view.findViewById(R.id.newMeeting);
-        mTime_Hour = (NumberPicker) view.findViewById(R.id.picker_hour);
-        mTime_Minute = (NumberPicker) view.findViewById(R.id.picker_minute);
+        timeHour = (NumberPicker) view.findViewById(R.id.picker_hour);
+        timeMinute = (NumberPicker) view.findViewById(R.id.picker_minute);
         // Fetch arguments from bundle and set title
         // Show soft keyboard automatically and request focus to field
 
@@ -89,8 +89,8 @@ public class NewMeetingDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 addData();
-                if (Creation==true) {
-                    ApiService.addMeeting(NewMeeting);
+                if (creation==true) {
+                    apiService.addMeeting(newMeeting);
                     dismiss();
                 }
             }
@@ -101,16 +101,16 @@ public class NewMeetingDialogFragment extends DialogFragment {
 
     private void addData() {
         if (mCreator.getText()!=null&&mSujet.getText()!=null&&mParticipants.getText()!=null) {
-            NewMeeting = new Meeting(
+            newMeeting = new Meeting(
                     mSujet.getText().toString(),
                     ConvertSalle(mSalles.getSelectedItem().toString()),
                     mSujet.getText().toString(),
                     mCreator.getText().toString(),
                     mParticipants.getText().toString(),
-                    mTime_Hour.getValue(),
-                    mTime_Minute.getValue());
-            Creation = true;
-        }else Creation = false;
+                    timeHour.getValue(),
+                    timeMinute.getValue());
+            creation = true;
+        }else creation = false;
     }
 
     private Salle ConvertSalle(String string) {
@@ -155,11 +155,11 @@ public class NewMeetingDialogFragment extends DialogFragment {
     }
 
     private void setNumberPicker() {
-        mTime_Hour.setMinValue(0);
-        mTime_Minute.setMinValue(0);
+        timeHour.setMinValue(0);
+        timeMinute.setMinValue(0);
 
-        mTime_Hour.setMaxValue(23);
-        mTime_Minute.setMaxValue(59);
+        timeHour.setMaxValue(23);
+        timeMinute.setMaxValue(59);
     }
 
     @Override

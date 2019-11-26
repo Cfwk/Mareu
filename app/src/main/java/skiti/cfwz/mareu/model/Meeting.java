@@ -25,7 +25,7 @@ public class Meeting {
 
     public String getName(){ return sujet + " - " + time.getHourOfDay()+":"+time.getMinuteOfHour() +" - "+ creator;}
 
-    public void setName(String nom) { this.name = nom; }
+    public void setName(String name) { this.name = name; }
 
     public LocalTime getTime() {
         return time;

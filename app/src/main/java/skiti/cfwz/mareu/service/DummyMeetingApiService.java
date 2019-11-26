@@ -12,7 +12,6 @@ import skiti.cfwz.mareu.model.Salle;
  */
 
 public class DummyMeetingApiService implements MeetingApiService {
-
     private List<Meeting> meetings = DummyMeetingGenerator.generateMeetings();
     private List<Salle> salles = DummySallesGenerator.generateSalles();
     private List<Meeting> meetingsStock = DummyMeetingGenerator.generateMeetings();

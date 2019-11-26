@@ -12,7 +12,6 @@ import skiti.cfwz.mareu.model.Salle;
  */
 
 public abstract class DummySallesGenerator {
-
     private static List<Salle> DUMMY_SALLES = Arrays.asList(
             new Salle("Salle rouge",1,R.drawable.ic_salle_rouge_24dp),
             new Salle("Salle verte",2,R.drawable.ic_salle_verte_24dp),

@@ -34,5 +34,5 @@ public class Salle {
         return avatarColor;
     }
 
-    public void setColor(int avatarColor) { avatarColor = avatarColor; }
+    public void setColor(int avatarColor) { this.avatarColor = avatarColor; }
 }

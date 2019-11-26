@@ -29,10 +29,9 @@ import skiti.cfwz.mareu.view.ListMeetingRecyclerViewAdapter;
  */
 
 public class MeetingFragment extends Fragment {
-
-    private MeetingApiService mApiService;
-    private List<Meeting> mMeetings;
-    private RecyclerView mRecyclerView;
+    private MeetingApiService apiService;
+    private List<Meeting> meetings;
+    private RecyclerView recyclerView;
 
     /**
      * Create and return a new instance
@@ -47,16 +46,16 @@ public class MeetingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mApiService = DI.getMeetingApiService();
+        apiService = DI.getMeetingApiService();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_meeting_list, container, false);
         Context context = view.getContext();
-        mRecyclerView = (RecyclerView) view;
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        recyclerView = (RecyclerView) view;
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         initList();
         return view;
     }
@@ -64,8 +63,8 @@ public class MeetingFragment extends Fragment {
      * Init the List of neighbours
      */
     private void initList() {
-        mMeetings = mApiService.getMeetings();
-        mRecyclerView.setAdapter(new ListMeetingRecyclerViewAdapter(mMeetings));
+        meetings = apiService.getMeetings();
+        recyclerView.setAdapter(new ListMeetingRecyclerViewAdapter(meetings));
     }
 
     @Override
@@ -87,12 +86,12 @@ public class MeetingFragment extends Fragment {
      */
     @Subscribe
     public void onDeleteMeeting(DeleteMeetingEvent event) {
-        mApiService.deleteMeetings(event.meeting);
+        apiService.deleteMeetings(event.meeting);
         initList();
     }
     @Subscribe
     public void onResetMeeting(ResetMeetingEvent event) {
-        mApiService.resetFilter();
+        apiService.resetFilter();
         initList();
     }
     @Subscribe
