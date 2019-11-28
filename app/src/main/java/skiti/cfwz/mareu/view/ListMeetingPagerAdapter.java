@@ -6,10 +6,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import skiti.cfwz.mareu.controller.MeetingFragment;
 
-/**
- * Created by Skiti on 26/09/2019
- */
-
 public class ListMeetingPagerAdapter extends FragmentPagerAdapter {
 
     public ListMeetingPagerAdapter(FragmentManager fm) {
