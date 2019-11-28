@@ -46,7 +46,7 @@
             />
         <Spinner
             android:id="@+id/salle"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:prompt="@string/action_settings" />
     </LinearLayout>
