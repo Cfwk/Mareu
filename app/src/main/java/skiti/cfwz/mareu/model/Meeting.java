@@ -1,11 +1,6 @@
 package skiti.cfwz.mareu.model;
 
-import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
-
-/**
- * Created by Skiti on 21/08/2019
- */
 
 public class Meeting {
     private String name;

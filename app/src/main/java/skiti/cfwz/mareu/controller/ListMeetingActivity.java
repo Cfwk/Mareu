@@ -27,10 +27,6 @@ import skiti.cfwz.mareu.service.DI;
 import skiti.cfwz.mareu.service.MeetingApiService;
 import skiti.cfwz.mareu.view.ListMeetingPagerAdapter;
 
-/**
- * Created by Skiti on 21/08/2019
- */
-
 public class ListMeetingActivity extends AppCompatActivity {
     @BindView(R.id.addMeetingButton)
     FloatingActionButton mAddButton;

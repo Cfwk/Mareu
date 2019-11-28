@@ -7,10 +7,6 @@ import java.util.List;
 import skiti.cfwz.mareu.model.Meeting;
 import skiti.cfwz.mareu.model.Salle;
 
-/**
- * Created by Skiti on 21/08/2019
- */
-
 public class DummyMeetingApiService implements MeetingApiService {
     private List<Meeting> meetings = DummyMeetingGenerator.generateMeetings();
     private List<Salle> salles = DummySallesGenerator.generateSalles();

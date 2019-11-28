@@ -24,10 +24,6 @@ import skiti.cfwz.mareu.model.Salle;
 import skiti.cfwz.mareu.service.DI;
 import skiti.cfwz.mareu.service.MeetingApiService;
 
-/**
- * Created by Skiti on 21/08/2019
- */
-
 public class NewMeetingDialogFragment extends DialogFragment {
     private Spinner mSalles;
     private EditText mCreator;

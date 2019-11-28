@@ -1,9 +1,5 @@
 package skiti.cfwz.mareu.model;
 
-/**
- * Created by Skiti on 11/09/2019
- */
-
 public class Salle {
     private String name;
     private int lieu;

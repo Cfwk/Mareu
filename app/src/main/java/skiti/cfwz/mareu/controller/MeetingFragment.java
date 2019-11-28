@@ -24,24 +24,15 @@ import skiti.cfwz.mareu.service.DI;
 import skiti.cfwz.mareu.service.MeetingApiService;
 import skiti.cfwz.mareu.view.ListMeetingRecyclerViewAdapter;
 
-/**
- * Created by Skiti on 22/08/2019
- */
-
 public class MeetingFragment extends Fragment {
     private MeetingApiService apiService;
     private List<Meeting> meetings;
     private RecyclerView recyclerView;
 
-    /**
-     * Create and return a new instance
-     * @return @{@link MeetingFragment}
-     */
     public static MeetingFragment newInstance() {
         MeetingFragment fragment = new MeetingFragment();
         return fragment;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,9 +50,7 @@ public class MeetingFragment extends Fragment {
         initList();
         return view;
     }
-    /**
-     * Init the List of neighbours
-     */
+
     private void initList() {
         meetings = apiService.getMeetings();
         recyclerView.setAdapter(new ListMeetingRecyclerViewAdapter(meetings));
@@ -80,10 +69,6 @@ public class MeetingFragment extends Fragment {
         EventBus.getDefault().unregister(this);
     }
 
-    /**
-     * Fired if the user clicks on a delete button
-     * @param event
-     */
     @Subscribe
     public void onDeleteMeeting(DeleteMeetingEvent event) {
         apiService.deleteMeetings(event.meeting);
@@ -98,5 +83,4 @@ public class MeetingFragment extends Fragment {
     public void onFilterMeeting(FilterMeetingEvent event){
         initList();
     }
-
 }

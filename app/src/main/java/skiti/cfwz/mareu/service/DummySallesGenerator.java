@@ -7,10 +7,6 @@ import java.util.List;
 import skiti.cfwz.mareu.R;
 import skiti.cfwz.mareu.model.Salle;
 
-/**
- * Created by Skiti on 11/09/2019
- */
-
 public abstract class DummySallesGenerator {
     private static List<Salle> DUMMY_SALLES = Arrays.asList(
             new Salle("Salle rouge",1,R.drawable.ic_salle_rouge_24dp),

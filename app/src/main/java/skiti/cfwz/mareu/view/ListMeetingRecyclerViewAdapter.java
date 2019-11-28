@@ -21,10 +21,6 @@ import skiti.cfwz.mareu.R;
 import skiti.cfwz.mareu.model.DeleteMeetingEvent;
 import skiti.cfwz.mareu.model.Meeting;
 
-/**
- * Created by Skiti on 22/08/2019
- */
-
 public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMeetingRecyclerViewAdapter.ViewHolder> {
     private final List<Meeting> meetings;
 
@@ -57,7 +53,6 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
             }
         });
     }
-
 
     @Override
     public int getItemCount() {

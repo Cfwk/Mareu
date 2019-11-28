@@ -6,10 +6,6 @@ import java.util.List;
 
 import skiti.cfwz.mareu.model.Meeting;
 
-/**
- * Created by Skiti on 26/09/2019
- */
-
 public abstract class DummyMeetingGenerator {
     private static List<Meeting> DUMMY_MEETING = Arrays.asList(
             );
